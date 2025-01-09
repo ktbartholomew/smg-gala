@@ -27,7 +27,7 @@ export default function RootLayout({
             loading="eager"
             placeholder="blur"
             quality={100}
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             src={bgImage}
             style={{ filter: "brightness(0.5)" }}
           />
