@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import "./globals.css";
 import content from "@/app/content";
-import bgImage from "./adobe-sparkle-cosmos.jpg";
+import bgImage from "./adobe-sparkle-cosmos-shift.webp";
 import Glimmer from "@/components/glimmer";
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
             quality={100}
             sizes="100vw"
             src={bgImage}
-            style={{ filter: "brightness(0.5) saturate(1)" }}
+            style={{ filter: "brightness(0.5)" }}
           />
         </div>
         {children}

@@ -19,7 +19,7 @@
   filter: blur(2px);
   content: "";
   border-radius: 100%;
-  background-color: rgb(200 163 76 / 0.6);
+  background-color: rgb(127 163 191 / 0.6);
   mix-blend-mode: color-dodge;
   position: absolute;
   animation-duration: 16s;

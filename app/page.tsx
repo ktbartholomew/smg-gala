@@ -3,22 +3,25 @@ import content from "./content";
 import BorderCard from "@/components/border-card";
 import GlowButton from "@/components/glow-button";
 import Button from "@/components/button";
-import placeholderLogo from "./placeholder-logo.svg";
+import placeholderLogo from "./smg-70-platinum-logo.webp";
 import placeholder from "./placeholder.jpg";
 
 export default function Home() {
   return (
     <>
       <div className="max-w-[80ch] mx-auto mt-8 ">
-        <BorderCard>
+        <BorderCard background="opaque">
           <div className="p-16">
             <Image
               src={placeholderLogo}
               alt="Placeholder"
-              className="mx-auto mb-8"
+              className="mx-auto"
               priority
               width={400}
             />
+            <h1 className="text-center text-5xl tracking-tight text-balance font-bold mb-8">
+              {content.eventName}
+            </h1>
             <div className="text-2xl">
               <p className="text-center mb-16">{content.homeLogoLeader}</p>
             </div>

@@ -43,7 +43,7 @@ export default function Glimmer() {
               ].join(" ")}
               style={{
                 animationDelay: `${delay}s`,
-                backgroundColor: `rgba( 200 163 76 / ${opacity})`,
+                backgroundColor: `rgba( 127 163 191 / ${opacity})`,
               }}
             ></div>
           </div>

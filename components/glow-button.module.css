@@ -4,10 +4,10 @@
 
 @keyframes glow {
   0% {
-    box-shadow: 0 0 2rem #facc15;
+    box-shadow: 0 0 2rem #98bedb;
   }
 
   100% {
-    box-shadow: 0 0 3rem #fde047;
+    box-shadow: 0 0 3rem #b4daf8;
   }
 }

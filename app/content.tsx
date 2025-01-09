@@ -1,7 +1,8 @@
 const content = {
-  siteTitle: "Saint Maria Goretti Gala",
+  siteTitle: "Saint Maria Goretti Platinum Gala",
   siteDescription:
     "Celebrate 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
+  eventName: "Saint Maria Goretti Platinum Gala",
   homeLogoLeader:
     "Join Saint Maria Goretti Catholic School as we celebrate 70 years of providing outstanding Catholic education to the entire Arlington community.",
   homePrimaryButtonText: "Buy Tickets",
