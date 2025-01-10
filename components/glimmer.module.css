@@ -3,12 +3,14 @@
   height: 100vh;
   position: fixed;
   z-index: -40;
+  transform: translateZ(0) translateZ(0);
 }
 
 .ballContainer {
   position: absolute;
   animation-duration: 16s;
   animation-iteration-count: infinite;
+  will-change: transform;
 }
 
 .ball {
@@ -24,6 +26,7 @@
   position: absolute;
   animation-duration: 16s;
   animation-iteration-count: infinite;
+  will-change: transform;
 }
 
 .animateX0 {
@@ -53,15 +56,15 @@
 @keyframes yAxis0 {
   0% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
   50% {
     animation-timing-function: ease-in-out;
-    transform: translateY(50px);
+    transform: translateZ(0) translateY(50px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
 }
 
@@ -69,77 +72,77 @@
   0% {
     /* animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64); */
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
   25% {
     /* animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64); */
     animation-timing-function: ease-in-out;
-    transform: translateX(20px);
+    transform: translateZ(0) translateX(20px);
   }
   50% {
     /* animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64); */
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
   75% {
     /* animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64); */
     animation-timing-function: ease-in-out;
-    transform: translateX(-20px);
+    transform: translateZ(0) translateX(-20px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
 }
 
 @keyframes xAxis1 {
   0% {
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
 }
 
 @keyframes yAxis1 {
   0% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
   50% {
     animation-timing-function: ease-in-out;
-    transform: translateY(100px);
+    transform: translateZ(0) translateY(100px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
 }
 
 @keyframes xAxis2 {
   0% {
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateX(0px);
+    transform: translateZ(0) translateX(0px);
   }
 }
 
 @keyframes yAxis2 {
   0% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
   50% {
     animation-timing-function: ease-in-out;
-    transform: translateY(20px);
+    transform: translateZ(0) translateY(20px);
   }
   100% {
     animation-timing-function: ease-in-out;
-    transform: translateY(0px);
+    transform: translateZ(0) translateY(0px);
   }
 }

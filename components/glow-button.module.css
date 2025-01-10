@@ -1,5 +1,6 @@
 .glowButton {
-  animation: glow 2s infinite ease-in-out alternate;
+  box-shadow: 0 0 2rem #98bedb, 0 0 2px #d0f6ff, inset 0 0 8px #98bedb;
+  /* animation: glow 2s infinite ease-in-out alternate; */
 }
 
 @keyframes glow {
