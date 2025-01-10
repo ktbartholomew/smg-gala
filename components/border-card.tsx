@@ -5,7 +5,7 @@ export default function BorderCard(props: {
   children: ReactNode;
 }) {
   const translucentClass =
-    "bg-gradient-to-tr from-zinc-800/60 to-zinc-900/80 backdrop-blur-sm";
+    "bg-gradient-to-tr from-zinc-900/90 to-zinc-900/90 backdrop-blur-sm";
   const opaqueClass = "bg-background";
 
   return (
