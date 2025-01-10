@@ -10,7 +10,7 @@ export default function Glimmer() {
   useEffect(() => {
     const balls: ReactElement[] = [];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       const x = Math.random() * 100;
       const y = Math.random() * 100;
       const delay = Math.round(Math.random() * 6 - 3);
