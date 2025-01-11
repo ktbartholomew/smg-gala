@@ -87,7 +87,7 @@ export default function Glimmer() {
 
     const balls: GlimmerBall[] = [];
     for (let i = 0; i < 100; i++) {
-      let scale = Math.random();
+      const scale = Math.random();
       balls.push({
         x: 10 + Math.random() * 80,
         y: Math.random() * 100,
