@@ -17,13 +17,15 @@ type GlimmerBall = {
   };
 };
 
+const TAILWIND_MD_BREAKPOINT = 768;
+
 // The max radius of a ball. Each one is randomly scaled to be a percentage of
 // this max size.
-const baseRadius = 32;
+const BALL_RADIUS = 32;
 
 const drawCircle = (ctx: CanvasRenderingContext2D, ball: GlimmerBall) => {
   // The radius of the ball
-  const radius = baseRadius * ball.scale;
+  const radius = BALL_RADIUS * ball.scale;
 
   // The center of the ball's elliptical path in pixels
   const xPercent = (ball.x / 100) * ctx.canvas.width;
@@ -64,9 +66,12 @@ function draw(ctx: CanvasRenderingContext2D, balls: GlimmerBall[]) {
     shape.angle %= Math.PI * 2; // Keep angle within 0 to 2π
   });
 
-  requestAnimationFrame(() => {
-    draw(ctx, balls);
-  });
+  // Only animate if the canvas is above
+  if (ctx.canvas.width >= TAILWIND_MD_BREAKPOINT) {
+    requestAnimationFrame(() => {
+      draw(ctx, balls);
+    });
+  }
 }
 
 export default function Glimmer() {
