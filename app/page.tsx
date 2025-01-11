@@ -21,6 +21,7 @@ export default function Home() {
               className="mx-auto"
               priority
               width={400}
+              height={400}
             />
             <h1
               className={`${monteCarlo.className} text-center text-5xl md:text-7xl text-balance font-bold mb-8`}

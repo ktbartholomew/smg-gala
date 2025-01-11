@@ -18,7 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <Glimmer />
         <div className="bg-black block w-[100vw] h-[100vh] top-0 left-0 fixed -z-50">
           <Image
             alt="Sparks at night"
@@ -31,6 +30,7 @@ export default function RootLayout({
             src={bgImage}
             style={{ filter: "brightness(0.5)" }}
           />
+          <Glimmer />
         </div>
         {children}
       </body>
