@@ -1,3 +1,12 @@
+import { StaticImageData } from "next/image";
+
+type Sponsor = {
+  name: string;
+  logo: StaticImageData;
+  logoUrl?: string;
+  website?: string;
+};
+
 const content = {
   siteTitle: "Saint Maria Goretti Platinum Gala",
   siteDescription:
@@ -31,6 +40,15 @@ const content = {
       </p>
     </>
   ),
+  buyTicketsUrl: "https://one.bidpal.net/athomedd2024/welcome",
+  sponsorCTAUrl: `mailto:spirit@smgschool.org?subject=${encodeURIComponent(
+    "I'd like to be a sponsor of the SMG Platinum Gala!"
+  )}`,
+  sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
+  sponsorCTASubHeadline:
+    "Support our mission of Catholic Education by becoming a sponsor today!",
+  tier0Sponsors: [] as Sponsor[],
+  tier1Sponsors: [] as Sponsor[],
 };
 
 export default content;

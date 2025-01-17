@@ -5,7 +5,7 @@ import BorderCard from "@/components/border-card";
 import GlowButton from "@/components/glow-button";
 import Button from "@/components/button";
 import placeholderLogo from "./smg-70-platinum-logo-transparent.webp";
-import placeholder from "./placeholder.jpg";
+import Link from "next/link";
 
 const monteCarlo = MonteCarlo({ weight: ["400"], subsets: ["latin"] });
 
@@ -33,10 +33,14 @@ export default function Home() {
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center md:justify-center text-xl mb-16">
               <div>
-                <GlowButton>{content.homePrimaryButtonText}</GlowButton>
+                <Link href={content.buyTicketsUrl} target="_blank">
+                  <GlowButton>{content.homePrimaryButtonText}</GlowButton>
+                </Link>
               </div>
               <div>
-                <Button>{content.homeSecondaryButtonText}</Button>
+                <Link href={content.sponsorCTAUrl}>
+                  <Button>{content.homeSecondaryButtonText}</Button>
+                </Link>
               </div>
             </div>
             <p className="text-xl md:text-2xl text-center">
@@ -47,85 +51,54 @@ export default function Home() {
         </BorderCard>
       </div>
 
-      <div className="max-w-[80ch] mx-auto mt-16 px-4 md:px-16">
-        <h2 className="text-center font-bold tracking-tight text-5xl mb-8">
-          Platinum Sponsors
-        </h2>
-        <div className="grid gap-8 justify-center grid-cols-2">
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
+      {content.tier0Sponsors.length > 0 && (
+        <div id="sponsors" className="max-w-[80ch] mx-auto mt-16 px-4 md:px-16">
+          <h2
+            id="platinum-sponsors"
+            className="text-center font-bold tracking-tight text-5xl mb-8"
+          >
+            Platinum Sponsors
+          </h2>
+          <div className="grid gap-8 justify-center grid-cols-2">
+            {content.tier0Sponsors.map((sponsor, idx) => (
+              <div key={idx}>
+                <a href={sponsor.website} target="_blank" rel="noopener">
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    title={sponsor.name}
+                    loading="lazy"
+                    width={300}
+                  />
+                </a>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="max-w-[80ch] mx-auto mt-16 px-4 md:px-16">
-        <h2 className="text-center font-bold tracking-tight text-5xl mb-8">
-          Gold Sponsors
-        </h2>
-        <div className="grid gap-8 grid-cols-3">
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
-          </div>
-          <div>
-            <Image
-              src={placeholder}
-              alt="Placeholder"
-              loading="lazy"
-              width={300}
-            />
+      {content.tier1Sponsors.length > 0 && (
+        <div className="max-w-[80ch] mx-auto mt-16 px-4 md:px-16">
+          <h2 className="text-center font-bold tracking-tight text-5xl mb-8">
+            Gold Sponsors
+          </h2>
+          <div className="grid gap-8 grid-cols-3">
+            {content.tier1Sponsors.map((sponsor, idx) => (
+              <div key={idx}>
+                <a href={sponsor.website} target="_blank" rel="noopener">
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    title={sponsor.name}
+                    loading="lazy"
+                    width={250}
+                  />
+                </a>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
