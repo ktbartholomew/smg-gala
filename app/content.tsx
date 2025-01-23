@@ -40,7 +40,8 @@ const content = {
       </p>
     </>
   ),
-  buyTicketsUrl: "https://one.bidpal.net/athomedd2024/welcome",
+  buyTicketsUrl:
+    "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/home/story",
   sponsorCTAUrl: `mailto:spirit@smgschool.org?subject=${encodeURIComponent(
     "I'd like to be a sponsor of the SMG Platinum Gala!"
   )}`,
