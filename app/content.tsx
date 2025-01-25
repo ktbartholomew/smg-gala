@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 
 type Sponsor = {
   name: string;
@@ -8,6 +9,7 @@ type Sponsor = {
 };
 
 const content = {
+  schoolWebsiteUrl: "https://www.smgschool.org/",
   siteTitle: "Saint Maria Goretti Platinum Gala",
   siteDescription:
     "Celebrate 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
@@ -42,14 +44,18 @@ const content = {
   ),
   buyTicketsUrl:
     "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/home/story",
-  sponsorCTAUrl: `mailto:spirit@smgschool.org?subject=${encodeURIComponent(
-    "I'd like to be a sponsor of the SMG Platinum Gala!"
-  )}`,
+  sponsorCTAUrl: `https://eventsupporter.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/sponsorship-packages`,
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
   tier0Sponsors: [] as Sponsor[],
-  tier1Sponsors: [] as Sponsor[],
+  tier1Sponsors: [
+    {
+      name: "PrintMailPro",
+      logo: printmailpro,
+      website: "https://printmailpro.com/",
+    },
+  ] as Sponsor[],
 };
 
 export default content;

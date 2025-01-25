@@ -4,6 +4,7 @@ import "./globals.css";
 import content from "@/app/content";
 import bgImage from "./adobe-sparkle-cosmos-shift.webp";
 import Glimmer from "@/components/glimmer";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: content.siteTitle,
@@ -33,6 +34,12 @@ export default function RootLayout({
           <Glimmer />
         </div>
         {children}
+        <div className="text-center text-sm text-gray-300 my-8">
+          &copy; {new Date().getFullYear()}{" "}
+          <Link href={content.schoolWebsiteUrl} target="_blank">
+            Saint Maria Goretti Catholic School
+          </Link>
+        </div>
       </body>
     </html>
   );

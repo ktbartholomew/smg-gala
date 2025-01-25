@@ -82,9 +82,9 @@ export default function Home() {
           <h2 className="text-center font-bold tracking-tight text-5xl mb-8">
             Gold Sponsors
           </h2>
-          <div className="grid gap-8 grid-cols-3">
+          <div className="flex flex-wrap justify-center">
             {content.tier1Sponsors.map((sponsor, idx) => (
-              <div key={idx}>
+              <div key={idx} className="p-4 w-1/3">
                 <a href={sponsor.website} target="_blank" rel="noopener">
                   <Image
                     src={sponsor.logo}
