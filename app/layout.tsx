@@ -40,6 +40,11 @@ export default function RootLayout({
             Saint Maria Goretti Catholic School
           </Link>
         </div>
+        <script
+          defer
+          data-domain="gala.smgschool.org"
+          src="/js/script.js"
+        ></script>
       </body>
     </html>
   );
