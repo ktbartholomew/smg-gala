@@ -3,7 +3,7 @@ import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 
 type Sponsor = {
   name: string;
-  logo: StaticImageData;
+  logo?: StaticImageData;
   logoUrl?: string;
   website?: string;
 };
@@ -54,6 +54,11 @@ const content = {
       name: "PrintMailPro",
       logo: printmailpro,
       website: "https://printmailpro.com/",
+    },
+  ] as Sponsor[],
+  tier3Sponsors: [
+    {
+      name: "The Guerrero Family",
     },
   ] as Sponsor[],
 };
