@@ -90,7 +90,7 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center">
             {content.tier1Sponsors.map((sponsor, idx) => (
-              <div key={idx} className="p-4 w-1/3">
+              <div key={idx} className="p-4 w-1/2 md:w-1/3">
                 <a href={sponsor.website} target="_blank" rel="noopener">
                   {sponsor.logo ? (
                     <Image
@@ -119,7 +119,7 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center">
             {content.tier3Sponsors.map((sponsor, idx) => (
-              <div key={idx} className="p-4 w-1/3">
+              <div key={idx} className="p-4 w-1/2 md:w-1/3">
                 <a href={sponsor.website} target="_blank" rel="noopener">
                   {sponsor.logo ? (
                     <Image
@@ -130,7 +130,7 @@ export default function Home() {
                       width={250}
                     />
                   ) : (
-                    <div className="text-3xl leading-tight bold text-center text-balance font-bold">
+                    <div className=" text-2xl md:text-3xl leading-tight bold text-center text-balance font-bold">
                       {sponsor.name}
                     </div>
                   )}
