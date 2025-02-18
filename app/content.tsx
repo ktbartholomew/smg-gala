@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import printmailpro from "@/app/sponsors/printmailpro-logo.png";
+import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
 
 type Sponsor = {
   name: string;
@@ -48,12 +49,23 @@ const content = {
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
-  tier0Sponsors: [] as Sponsor[],
+  tier0Sponsors: [
+    {
+      name: "James and Sherry Lewis",
+    },
+  ] as Sponsor[],
   tier1Sponsors: [
     {
       name: "PrintMailPro",
       logo: printmailpro,
       website: "https://printmailpro.com/",
+    },
+  ] as Sponsor[],
+  tier2Sponsors: [
+    {
+      name: "Fort Worth Community Credit Union",
+      logo: fwccu,
+      website: "https://www.ftwccu.org/",
     },
   ] as Sponsor[],
   tier3Sponsors: [
