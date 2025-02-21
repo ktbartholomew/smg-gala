@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image";
 import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
+import drsalexander from "@/app/sponsors/drs-alexander.png";
 
 type Sponsor = {
   name: string;
@@ -49,6 +50,11 @@ const content = {
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
+  tier0sponsorName: "Platinum",
+  tier1sponsorName: "Gold",
+  tier2sponsorName: "Silver",
+  tier3sponsorName: "Bronze",
+  tier4sponsorName: "Ruby",
   tier0Sponsors: [
     {
       name: "James and Sherry Lewis",
@@ -63,12 +69,19 @@ const content = {
   ] as Sponsor[],
   tier2Sponsors: [
     {
+      name: "Drs Alexander Orthodontics",
+      logo: drsalexander,
+      website: "https://www.drsalexander.com/",
+    },
+  ] as Sponsor[],
+  tier3Sponsors: [
+    {
       name: "Fort Worth Community Credit Union",
       logo: fwccu,
       website: "https://www.ftwccu.org/",
     },
   ] as Sponsor[],
-  tier3Sponsors: [
+  tier4Sponsors: [
     {
       name: "The Guerrero Family",
     },
