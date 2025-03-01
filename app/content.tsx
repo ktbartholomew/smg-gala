@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import barnesvideogroup from "@/app/sponsors/barnes-video-group-logo.png";
 import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
@@ -50,38 +51,46 @@ const content = {
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
-  tier0sponsorName: "Platinum",
-  tier1sponsorName: "Gold",
-  tier2sponsorName: "Silver",
-  tier3sponsorName: "Bronze",
-  tier4sponsorName: "Ruby",
+  tier0sponsorName: "Title",
+  tier1sponsorName: "Platinum",
+  tier2sponsorName: "Gold",
+  tier3sponsorName: "Silver",
+  tier4sponsorName: "Bronze",
+  tier5sponsorName: "Ruby",
   tier0Sponsors: [
+    {
+      logo: barnesvideogroup,
+      name: "Barnes Video Group",
+      website: "https://www.barnesvideogroup.com/",
+    },
+  ] as Sponsor[],
+  tier1Sponsors: [
     {
       name: "James and Sherry Lewis",
     },
   ] as Sponsor[],
-  tier1Sponsors: [
+  tier2Sponsors: [
     {
       name: "PrintMailPro",
       logo: printmailpro,
       website: "https://printmailpro.com/",
     },
   ] as Sponsor[],
-  tier2Sponsors: [
+  tier3Sponsors: [
     {
       name: "Drs Alexander Orthodontics",
       logo: drsalexander,
       website: "https://www.drsalexander.com/",
     },
   ] as Sponsor[],
-  tier3Sponsors: [
+  tier4Sponsors: [
     {
       name: "Fort Worth Community Credit Union",
       logo: fwccu,
       website: "https://www.ftwccu.org/",
     },
   ] as Sponsor[],
-  tier4Sponsors: [
+  tier5Sponsors: [
     {
       name: "The Guerrero Family",
     },
