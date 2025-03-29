@@ -3,12 +3,19 @@ import barnesvideogroup from "@/app/sponsors/barnes-video-group-logo.png";
 import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
+import marquezbakery from "@/app/sponsors/marquez-bakery.png";
 
 type Sponsor = {
   name: string;
   logo?: StaticImageData;
   logoUrl?: string;
   website?: string;
+};
+
+type SponsorGroup = {
+  name: string;
+  sponsorSize: "small" | "medium" | "large";
+  sponsors: Sponsor[];
 };
 
 const content = {
@@ -51,50 +58,82 @@ const content = {
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
-  tier0sponsorName: "Title",
-  tier1sponsorName: "Platinum",
-  tier2sponsorName: "Gold",
-  tier3sponsorName: "Silver",
-  tier4sponsorName: "Bronze",
-  tier5sponsorName: "Ruby",
-  tier0Sponsors: [
+
+  sponsorGroups: [
     {
-      logo: barnesvideogroup,
-      name: "Barnes Video Group",
-      website: "https://www.barnesvideogroup.com/",
+      name: "Title Sponsor",
+      sponsorSize: "large",
+      sponsors: [
+        {
+          name: "Barnes Video Group",
+          logo: barnesvideogroup,
+          website: "https://www.barnesvideogroup.com/",
+        },
+      ],
     },
-  ] as Sponsor[],
-  tier1Sponsors: [
     {
-      name: "James and Sherry Lewis",
+      name: "Platinum Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "James and Sherry Lewis",
+        },
+      ],
     },
-  ] as Sponsor[],
-  tier2Sponsors: [
     {
-      name: "PrintMailPro",
-      logo: printmailpro,
-      website: "https://printmailpro.com/",
+      name: "Gold Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "PrintMailPro",
+          logo: printmailpro,
+          website: "https://printmailpro.com/",
+        },
+      ],
     },
-  ] as Sponsor[],
-  tier3Sponsors: [
     {
-      name: "Drs Alexander Orthodontics",
-      logo: drsalexander,
-      website: "https://www.drsalexander.com/",
+      name: "Silver Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Drs Alexander Orthodontics",
+          logo: drsalexander,
+          website: "https://www.drsalexander.com/",
+        },
+      ],
     },
-  ] as Sponsor[],
-  tier4Sponsors: [
     {
-      name: "Fort Worth Community Credit Union",
-      logo: fwccu,
-      website: "https://www.ftwccu.org/",
+      name: "Bronze Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Fort Worth Community Credit Union",
+          logo: fwccu,
+          website: "https://www.ftwccu.org/",
+        },
+      ],
     },
-  ] as Sponsor[],
-  tier5Sponsors: [
     {
-      name: "The Guerrero Family",
+      name: "Ruby Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "The Guerrero Family",
+        },
+      ],
     },
-  ] as Sponsor[],
+    {
+      name: "Dessert Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Marquez Bakery",
+          logo: marquezbakery,
+          website: "https://www.marquezbakery.com/",
+        },
+      ],
+    },
+  ] as SponsorGroup[],
 };
 
 export default content;
