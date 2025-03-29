@@ -3,7 +3,7 @@
 import Image from "next/image";
 import content from "../app/content";
 
-export async function SponsorsList({ useTiers }: { useTiers: boolean }) {
+export async function SponsorsList() {
   return (
     <div className="mt-8 flex flex-wrap justify-center text-center">
       {content.sponsorGroups.map((group, idx) => {

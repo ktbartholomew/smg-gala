@@ -52,7 +52,7 @@ export default function Home() {
         </BorderCard>
       </div>
 
-      <SponsorsList useTiers />
+      <SponsorsList />
     </>
   );
 }
