@@ -81,7 +81,7 @@ const content = {
       ],
     },
     {
-      name: "Gold Sponsor",
+      name: "Printing Sponsor",
       sponsorSize: "medium",
       sponsors: [
         {
@@ -92,7 +92,7 @@ const content = {
       ],
     },
     {
-      name: "Silver Sponsor",
+      name: "Auction Sponsor",
       sponsorSize: "medium",
       sponsors: [
         {
