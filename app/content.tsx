@@ -4,6 +4,10 @@ import printmailpro from "@/app/sponsors/printmailpro-logo.png";
 import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
 import marquezbakery from "@/app/sponsors/marquez-bakery.png";
+import laisla from "@/app/sponsors/la-isla.png";
+import mgp from "@/app/sponsors/michael-gilles-purgason.png";
+import willowpark from "@/app/sponsors/willow-park-family-dentistry.png";
+import alvarado from "@/app/sponsors/alvarado-family-dentistry.png";
 
 type Sponsor = {
   name: string;
@@ -92,6 +96,17 @@ const content = {
       ],
     },
     {
+      name: "Silver Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Michael Gilles Purgason Foundation",
+          logo: mgp,
+          website: "https://www.michaelgpurgasonfoundation.org/",
+        },
+      ],
+    },
+    {
       name: "Auction Sponsor",
       sponsorSize: "medium",
       sponsors: [
@@ -110,6 +125,39 @@ const content = {
           name: "Fort Worth Community Credit Union",
           logo: fwccu,
           website: "https://www.ftwccu.org/",
+        },
+      ],
+    },
+    {
+      name: "Bronze Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Alvarado Family Dentistry",
+          logo: alvarado,
+          website: "https://www.alvaradodentist.com/",
+        },
+      ],
+    },
+    {
+      name: "Bronze Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Willow Park Family Dentistry",
+          logo: willowpark,
+          website: "http://www.willowparkfamilydentistry.com/",
+        },
+      ],
+    },
+    {
+      name: "Ruby Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "La Isla Restaurant",
+          logo: laisla,
+          website: "https://laislatx.com/",
         },
       ],
     },
