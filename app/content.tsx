@@ -8,6 +8,7 @@ import laisla from "@/app/sponsors/la-isla.png";
 import mgp from "@/app/sponsors/michael-gilles-purgason.png";
 import willowpark from "@/app/sponsors/willow-park-family-dentistry.png";
 import alvarado from "@/app/sponsors/alvarado-family-dentistry.png";
+import rrap from "@/app/sponsors/rick-and-rays-logo.webp";
 
 type Sponsor = {
   name: string;
@@ -81,6 +82,17 @@ const content = {
       sponsors: [
         {
           name: "James and Sherry Lewis",
+        },
+      ],
+    },
+    {
+      name: "Gold Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Rick & Ray's Auto Plaza",
+          logo: rrap,
+          website: "https://rickandraysautoplaza.com/",
         },
       ],
     },
