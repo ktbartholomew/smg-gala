@@ -31,8 +31,8 @@ const content = {
   eventName: "Saint Maria Goretti Platinum Gala",
   homeLogoLeader:
     "Join Saint Maria Goretti Catholic School as we celebrate 70 years of providing outstanding Catholic education to the entire Arlington community.",
-  homePrimaryButtonText: "Buy Tickets",
-  homeSecondaryButtonText: "Enter the Tuition Raffle",
+  homePrimaryButtonText: "Preview the Auction",
+  homeSecondaryButtonText: "Buy Raffle Tickets",
   eventAddress: (
     <>
       <strong>Saint Maria Goretti Platinum Gala</strong>
@@ -58,7 +58,7 @@ const content = {
     </>
   ),
   buyTicketsUrl:
-    "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/home/story",
+    "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/auctions/live-auction-preview",
   sponsorCTAUrl: `https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/shop/raffle`,
   sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
   sponsorCTASubHeadline:
