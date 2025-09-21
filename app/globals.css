@@ -3,15 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #111015;
-  --platinum: #7fa3bf;
-  --foreground: #ededed;
+  --champagne-light: rgb(250 247 232);
+  --champagne-dark: rgb(215 200 163);
+  --background: var(--champagne-dark);
+  --foreground: #3b362f;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.champagne-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--champagne-light) 10%,
+    var(--champagne-dark) 90%
+  );
 }
 
 p {

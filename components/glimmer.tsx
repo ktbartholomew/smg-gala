@@ -3,75 +3,189 @@
 import { useEffect, useRef } from "react";
 import styles from "./glimmer.module.css";
 
-type GlimmerBall = {
+export interface BubbleColumnOptions {
+  x: number; // Column center X (px)
+  canvasHeight: number; // Canvas height (px)
+  radius?: number; // Bubble radius (px), same for all in column
+  count?: number; // Number of bubbles in the column
+  speed?: number; // Upward speed (px/sec) for all bubbles
+  historyLimit?: number; // Max frames to keep in history
+  fillStyle?: string; // Fill style
+  strokeStyle?: string; // Stroke style
+  lineWidth?: number; // Stroke width
+}
+
+export interface BubblePosition {
   x: number;
   y: number;
-  scale: number;
-  opacity: number;
-  speed: number;
-  angle: number;
-  ellipse: {
-    width: number;
-    height: number;
-    angle: number;
-  };
-};
+}
 
-const TAILWIND_MD_BREAKPOINT = 768;
+export interface FrameSnapshot {
+  time: number; // DOMHighResTimeStamp
+  positions: BubblePosition[];
+}
 
-// The max radius of a ball. Each one is randomly scaled to be a percentage of
-// this max size.
-const BALL_RADIUS = 32;
+export class BubbleColumn {
+  public x: number;
+  private h: number;
+  private radius: number;
+  private count: number;
+  private speed: number;
+  private historyLimit: number;
+  private fillStyle: string;
+  private strokeStyle: string;
+  private lineWidth: number;
 
-const drawCircle = (ctx: CanvasRenderingContext2D, ball: GlimmerBall) => {
-  // The radius of the ball
-  const radius = BALL_RADIUS * ball.scale;
+  private bubbles: BubblePosition[] = [];
+  private history: FrameSnapshot[] = [];
 
-  // The center of the ball's elliptical path in pixels
-  const xPercent = (ball.x / 100) * ctx.canvas.width;
-  const yPercent = (ball.y / 100) * ctx.canvas.height;
+  constructor(opts: BubbleColumnOptions) {
+    const {
+      x,
+      canvasHeight,
+      radius = 8,
+      count = 10,
+      speed = 60,
+      historyLimit = 1000,
+      fillStyle = `rgba(198 174 133 / 0.2)`,
+      strokeStyle = "rgba(198 174 133 / 0.4)",
+      lineWidth = 1,
+    } = opts;
 
-  // The current position of the ball around its elliptical path
-  const ellipseX = ball.ellipse.width * Math.cos(ball.angle);
-  const ellipseY = ball.ellipse.height * Math.sin(ball.angle);
+    if (typeof x !== "number" || typeof canvasHeight !== "number") {
+      throw new Error("BubbleColumn requires numeric x and canvasHeight.");
+    }
 
-  // Rotate the elliptical path by a specified angle
-  const rotatedX =
-    xPercent +
-    (ellipseX * Math.cos(ball.ellipse.angle) -
-      ellipseY * Math.sin(ball.ellipse.angle));
-  const rotatedY =
-    yPercent +
-    (ellipseX * Math.sin(ball.ellipse.angle) +
-      ellipseY * Math.cos(ball.ellipse.angle));
+    this.x = x;
+    this.h = canvasHeight;
+    this.radius = radius;
+    this.count = Math.max(0, Math.floor(count));
+    this.speed = speed;
+    this.historyLimit = Math.max(0, Math.floor(historyLimit));
+    this.fillStyle = fillStyle;
+    this.strokeStyle = strokeStyle;
+    this.lineWidth = lineWidth;
 
-  // Draw the ball
-  ctx.beginPath();
-  ctx.fillStyle = `rgba( 127 163 191 / ${ball.opacity})`;
-  ctx.globalCompositeOperation = "color-dodge";
-  ctx.arc(rotatedX, rotatedY - window.scrollY * 0.04, radius, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.closePath();
-};
+    const gap = (this.h + 2 * this.radius) / (this.count || 1);
+    for (let i = 0; i < this.count; i++) {
+      const y = this.h + this.radius - i * gap + Math.random() * gap * 0.2;
+      this.bubbles.push({ x: this.x, y });
+    }
+  }
 
-function draw(ctx: CanvasRenderingContext2D, balls: GlimmerBall[]) {
+  /**
+   * Advance simulation by dtSec seconds and record a frame snapshot.
+   * @param dtSec Delta time in seconds
+   * @param t Optional timestamp (e.g., performance.now())
+   */
+  public step(dtSec: number, t: number = performance.now()): void {
+    const r = this.radius;
+    const speed = this.speed;
+
+    for (let i = 0; i < this.bubbles.length; i++) {
+      const b = this.bubbles[i];
+      b.y -= speed * dtSec;
+
+      if (b.y <= -r) {
+        b.y = this.h + r;
+      }
+    }
+
+    if (this.historyLimit > 0) {
+      // Store copies so external mutations won’t affect history
+      const frame: FrameSnapshot = {
+        time: t,
+        positions: this.bubbles.map((b) => ({ x: b.x, y: b.y })),
+      };
+      this.history.push(frame);
+      if (this.history.length > this.historyLimit) {
+        this.history.shift();
+      }
+    }
+  }
+
+  /**
+   * Render bubbles.
+   */
+  public draw(ctx: CanvasRenderingContext2D): void {
+    ctx.save();
+    ctx.fillStyle = this.fillStyle;
+    ctx.strokeStyle = this.strokeStyle;
+    ctx.lineWidth = this.lineWidth;
+
+    for (const b of this.bubbles) {
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      if (this.lineWidth > 0) ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  /**
+   * Get a snapshot copy of recent frames.
+   */
+  public getHistory(): FrameSnapshot[] {
+    return this.history.slice();
+  }
+
+  /**
+   * Clear stored history.
+   */
+  public clearHistory(): void {
+    this.history.length = 0;
+  }
+
+  /**
+   * Update canvas height (e.g., on resize).
+   */
+  public setCanvasHeight(newHeight: number): void {
+    this.h = newHeight;
+  }
+
+  /**
+   * Change speed at runtime (px/sec).
+   */
+  public setSpeed(pxPerSec: number): void {
+    this.speed = pxPerSec;
+  }
+
+  /**
+   * Change bubble radius at runtime (applies to all).
+   */
+  public setRadius(r: number): void {
+    this.radius = r;
+  }
+
+  /**
+   * Read-only accessors if you want them.
+   */
+  public getRadius(): number {
+    return this.radius;
+  }
+  public getSpeed(): number {
+    return this.speed;
+  }
+  public getCanvasHeight(): number {
+    return this.h;
+  }
+  public getBubbles(): ReadonlyArray<BubblePosition> {
+    return this.bubbles;
+  }
+}
+
+function draw(ctx: CanvasRenderingContext2D, columns: BubbleColumn[]) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-  balls.forEach((b) => {
-    drawCircle(ctx, b);
+  columns.forEach((b) => {
+    b.draw(ctx);
+    b.step(0.05);
   });
 
-  balls.forEach((shape) => {
-    shape.angle += shape.speed; // Increment angle to move along the ellipse
-    shape.angle %= Math.PI * 2; // Keep angle within 0 to 2π
+  requestAnimationFrame(() => {
+    draw(ctx, columns);
   });
-
-  // Only animate if the canvas is above
-  if (ctx.canvas.width >= TAILWIND_MD_BREAKPOINT) {
-    requestAnimationFrame(() => {
-      draw(ctx, balls);
-    });
-  }
 }
 
 export default function Glimmer() {
@@ -90,23 +204,137 @@ export default function Glimmer() {
     field.current.width = window.innerWidth;
     field.current.height = window.innerHeight;
 
-    const balls: GlimmerBall[] = [];
-    for (let i = 0; i < 100; i++) {
-      const scale = Math.random();
-      balls.push({
-        x: 10 + Math.random() * 80,
-        y: Math.random() * 100,
-        scale,
-        opacity: (1 - scale) * 0.5,
-        speed: Math.random() * 0.003,
-        angle: Math.random() * Math.PI * 2,
-        ellipse: {
-          width: 40 + Math.random() * 60,
-          height: 40 + Math.random() * 60,
-          angle: 0,
-        },
-      });
-    }
+    const columns = [
+      new BubbleColumn({
+        x: field.current.width * 0.098,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.1,
+        radius: 4,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.103,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.223,
+        radius: 1,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.225,
+        radius: 2,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.228,
+        radius: 2,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.42,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.422,
+        radius: 4,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.425,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.5,
+        radius: 2,
+        speed: 55,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.503,
+        radius: 2,
+        speed: 55,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.62,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.622,
+        radius: 4,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.625,
+        radius: 3,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.85,
+        radius: 1,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.852,
+        radius: 2,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.854,
+        radius: 1,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.8,
+        radius: 1,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.802,
+        radius: 2,
+        speed: 65,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+      new BubbleColumn({
+        x: field.current.width * 0.804,
+        radius: 1,
+        canvasHeight: field.current.height,
+        count: 20,
+      }),
+    ];
 
     window.addEventListener("resize", () => {
       if (!field.current) {
@@ -118,7 +346,7 @@ export default function Glimmer() {
     });
 
     requestAnimationFrame(() => {
-      draw(ctx, balls);
+      draw(ctx, columns);
     });
   }, [field]);
 

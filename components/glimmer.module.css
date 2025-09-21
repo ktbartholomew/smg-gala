@@ -3,5 +3,7 @@
   height: 100vh;
   position: fixed;
   transform: translateZ(0);
-  filter: blur(1px);
+  top: 0;
+  left: 0;
+  /* filter: blur(1px); */
 }

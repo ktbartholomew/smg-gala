@@ -25,20 +25,21 @@ type SponsorGroup = {
 
 const content = {
   schoolWebsiteUrl: "https://www.smgschool.org/",
-  siteTitle: "Saint Maria Goretti Platinum Gala",
+  siteTitle: "Saint Maria Goretti Gala",
   siteDescription:
-    "Celebrate 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
-  eventName: "Saint Maria Goretti Platinum Gala",
+    "Celebrate over 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
+  eventName: "A Toast to Grace.",
   homeLogoLeader:
-    "Join Saint Maria Goretti Catholic School as we celebrate 70 years of providing outstanding Catholic education to the entire Arlington community.",
+    "Join Saint Maria Goretti Catholic School as we celebrate over 70 years of providing outstanding Catholic education to the entire Arlington community.",
   homePrimaryButtonText: "Start Bidding Now",
   homeSecondaryButtonText: "Buy Raffle Tickets",
   eventAddress: (
     <>
-      <strong>Saint Maria Goretti Platinum Gala</strong>
+      <strong>Saint Maria Goretti Gala</strong>
       <br />
-      April 26th, 2025 <br />
-      The Hilton Arlington
+      April 25th, 2026 <br />
+      Loews Arlington Hotel <br />
+      888 Nolan Ryan Expressway
     </>
   ),
   aboutSaintMariaGoretti: (
@@ -51,7 +52,7 @@ const content = {
         good Catholic students; we raise good citizens.
       </p>
       <p>
-        We are happy to invite you to our 70th anniversary Platinum Gala to
+        We are happy to invite you to our &ldquo;Toast to Grace&rdquo; Gala to
         celebrate the decades of contributions we have made in Arlington, and to
         support as we prepare for 70 <strong>more</strong>, even better years!
       </p>
@@ -60,7 +61,7 @@ const content = {
   buyTicketsUrl:
     "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/auctions/silent-auction",
   sponsorCTAUrl: `https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/shop/raffle`,
-  sponsorCTAHeadline: "Sponsor SMG’s Platinum Gala",
+  sponsorCTAHeadline: "Sponsor SMG’s Gala",
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
 

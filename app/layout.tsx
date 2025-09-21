@@ -18,23 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        <div className="bg-black block w-[100vw] h-[100vh] top-0 left-0 fixed -z-50">
-          <Image
-            alt="Sparks at night"
-            className="object-cover"
-            fill
-            loading="eager"
-            placeholder="blur"
-            quality={100}
-            sizes="100vw"
-            src={bgImage}
-            style={{ filter: "brightness(0.5)" }}
-          />
-          <Glimmer />
-        </div>
+      <body className="antialiased">
+        <div className="champagne-gradient block w-[100vw] h-[100vh] top-0 left-0 fixed -z-50"></div>
+        <Glimmer />
         {children}
-        <div className="text-center text-sm text-gray-300 my-8">
+        <div className="text-center text-sm my-8">
           &copy; {new Date().getFullYear()}{" "}
           <Link href={content.schoolWebsiteUrl} target="_blank">
             Saint Maria Goretti Catholic School

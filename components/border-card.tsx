@@ -5,18 +5,20 @@ export default function BorderCard(props: {
   children: ReactNode;
 }) {
   const translucentClass =
-    "bg-gradient-to-tr from-zinc-900/90 to-zinc-900/90 backdrop-blur-sm";
+    "bg-gradient-to-tr from-zinc-100/30 to-zinc-100/30 backdrop-blur-sm";
   const opaqueClass = "bg-background";
 
   return (
     <div
       className={[
-        "p-[8px]",
+        "p-[8px] rounded-[28px]",
         props.background === "translucent" ? translucentClass : opaqueClass,
       ].join(" ")}
     >
-      <div className="border-4 border-zinc-100 p-[4px]">
-        <div className="border border-zinc-100">{props.children}</div>
+      <div className="border-4 border-[var(--champagne-dark)] p-[4px] rounded-[20px]">
+        <div className="border border-[var(--champagne-dark)] rounded-[14px]">
+          {props.children}
+        </div>
       </div>
     </div>
   );
