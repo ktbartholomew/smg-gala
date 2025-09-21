@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import "./globals.css";
 import content from "@/app/content";
-import bgImage from "./adobe-sparkle-cosmos-shift.webp";
 import Glimmer from "@/components/glimmer";
 import Link from "next/link";
 

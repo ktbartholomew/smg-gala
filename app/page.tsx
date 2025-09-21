@@ -1,12 +1,6 @@
 import { Instrument_Serif } from "next/font/google";
-import Image from "next/image";
 import content from "./content";
 import BorderCard from "@/components/border-card";
-import GlowButton from "@/components/glow-button";
-import Button from "@/components/button";
-import placeholderLogo from "./smg-70-platinum-logo-transparent.webp";
-import Link from "next/link";
-import { SponsorsList } from "@/components/sponsors-list";
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
