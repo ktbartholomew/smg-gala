@@ -1,12 +1,6 @@
-import { Instrument_Serif } from "next/font/google";
 import content from "./content";
 import BorderCard from "@/components/border-card";
 import Image from "next/image";
-
-const instrumentSerif = Instrument_Serif({
-  weight: ["400"],
-  subsets: ["latin"],
-});
 
 export default function Home() {
   return (
@@ -21,11 +15,6 @@ export default function Home() {
             height={512}
           />
           <div className="p-4 pt-0 md:pt-0 md:p-16">
-            {/* <h1
-              className={`${instrumentSerif.className} text-center text-5xl md:text-7xl text-balance font-bold mt-32 mb-16`}
-            >
-              {content.eventName}
-            </h1> */}
             <p className="text-xl md:text-2xl text-center">
               {content.eventAddress}
             </p>
