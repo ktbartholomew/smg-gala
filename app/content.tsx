@@ -37,9 +37,11 @@ const content = {
     <>
       <strong>Saint Maria Goretti Gala</strong>
       <br />
-      April 25th, 2026 <br />
-      Loews Arlington Hotel <br />
-      888 Nolan Ryan Expressway
+      April 25th, 2026
+      <br />
+      Live! at Loews - Arlington, TX
+      <br />
+      1600 E Randol Mill Rd
     </>
   ),
   aboutSaintMariaGoretti: (
