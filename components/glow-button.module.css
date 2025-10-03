@@ -1,18 +1,12 @@
 .glowButton {
-  box-shadow: 0 0 2rem #98bedb, 0 0 2px #d0f6ff, inset 0 0 8px #98bedb;
+  border: solid 1px var(--champagne-dark);
+  box-shadow: 0 0 2rem #fff, 0 0 2px #fff, inset 0 0 8px #fff;
+  background-color: var(--champagne-dark);
+  color: var(--foreground);
+  transition: background-color ease-in-out 0.2s;
 }
 
 .glowButton:hover {
-  background-color: #d0f6ff;
-  color: var(--background);
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 2rem #98bedb, 0 0 2px #d0f6ff, inset 0 0 8px #98bedb;
-  }
-
-  100% {
-    box-shadow: 0 0 2.25rem #b4daf8, 0 0 2px #d0f6ff, inset 0 0 8px #98bedb;
-  }
+  background-color: var(--champagne-darker);
+  color: var(--foreground);
 }

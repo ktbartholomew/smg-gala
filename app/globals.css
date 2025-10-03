@@ -5,6 +5,7 @@
 :root {
   --champagne-light: rgb(250 247 232);
   --champagne-dark: rgb(215 200 163);
+  --champagne-darker: rgb(205 190 153);
   --background: var(--champagne-dark);
   --foreground: #3b362f;
 }

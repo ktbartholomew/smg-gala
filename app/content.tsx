@@ -31,7 +31,7 @@ const content = {
   eventName: "A Toast to Grace.",
   homeLogoLeader:
     "Join Saint Maria Goretti Catholic School as we celebrate over 70 years of providing outstanding Catholic education to the entire Arlington community.",
-  homePrimaryButtonText: "Start Bidding Now",
+  homePrimaryButtonText: "Buy your tickets",
   homeSecondaryButtonText: "Buy Raffle Tickets",
   eventAddress: (
     <>
@@ -61,7 +61,7 @@ const content = {
     </>
   ),
   buyTicketsUrl:
-    "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/auctions/silent-auction",
+    "https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:eae22bc7-f31a-4995-8b6c-e29edeb66399/home/story",
   sponsorCTAUrl: `https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:da3fa58a-cda0-42c0-9f0e-a820905eb632/shop/raffle`,
   sponsorCTAHeadline: "Sponsor SMG’s Gala",
   sponsorCTASubHeadline:

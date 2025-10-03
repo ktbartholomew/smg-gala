@@ -1,6 +1,8 @@
 import content from "./content";
 import BorderCard from "@/components/border-card";
+import GlowButton from "@/components/glow-button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,6 +24,13 @@ export default function Home() {
               <p className="text-center mb-16 tracking-tight">
                 {content.homeLogoLeader}
               </p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 items-center md:justify-center text-xl mb-16">
+              <div>
+                <Link href={content.buyTicketsUrl} target="_blank">
+                  <GlowButton>{content.homePrimaryButtonText}</GlowButton>
+                </Link>
+              </div>
             </div>
             {/* <div className="flex flex-col md:flex-row gap-8 items-center md:justify-center text-xl mb-16">
               <div>
