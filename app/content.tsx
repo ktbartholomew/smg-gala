@@ -25,7 +25,7 @@ type SponsorGroup = {
 
 const content = {
   schoolWebsiteUrl: "https://www.smgschool.org/",
-  siteTitle: "Saint Maria Goretti Gala",
+  siteTitle: "A Toast to Grace: the 2026 Saint Maria Goretti Fundraiser Gala",
   siteDescription:
     "Celebrate over 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
   eventName: "A Toast to Grace.",
