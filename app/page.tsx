@@ -5,6 +5,8 @@ import GlowButton from "@/components/glow-button";
 import Image from "next/image";
 import Link from "next/link";
 
+import bvg from "@/app/sponsors/barnes-video-group-logo.png";
+
 export default function Home() {
   return (
     <>
@@ -13,10 +15,24 @@ export default function Home() {
           <Image
             className="mx-auto my-16"
             src="/a-toast-to-grace-lockup-square.svg"
-            alt="meow"
+            alt="A Toast to Grace SMG Gala"
             width={512}
             height={512}
           />
+          <div className="text-center mx-auto mb-8">
+            <span className="text-sm uppercase">Presented by</span>
+            <a
+              href="https://www.barnesvideogroup.com/?utm_source=gala-smgschool-org&utm_medium=web&utm_campaign=smg-gala-sponsor"
+              target="_blank"
+            >
+              <Image
+                src={bvg}
+                alt="Barnes Video Group"
+                width={512}
+                className="mx-auto"
+              />
+            </a>
+          </div>
           <div className="p-4 pt-0 md:pt-0 md:p-16">
             <p className="text-xl md:text-2xl text-center">
               {content.eventAddress}
