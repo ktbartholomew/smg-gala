@@ -1,14 +1,9 @@
 import { StaticImageData } from "next/image";
 import barnesvideogroup from "@/app/sponsors/barnes-video-group-logo.png";
-import printmailpro from "@/app/sponsors/printmailpro-logo.png";
-import fwccu from "@/app/sponsors/fort-worth-community-credit-union.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
-import marquezbakery from "@/app/sponsors/marquez-bakery.png";
-import laisla from "@/app/sponsors/la-isla.png";
-import mgp from "@/app/sponsors/michael-gilles-purgason.png";
-import willowpark from "@/app/sponsors/willow-park-family-dentistry.png";
-import alvarado from "@/app/sponsors/alvarado-family-dentistry.png";
-import rrap from "@/app/sponsors/rick-and-rays-logo.webp";
+import printmailpro from "@/app/sponsors/printmailpro-logo.png";
+import smartfamilies from "@/app/sponsors/smart-families.png";
+import williams from "@/app/sponsors/williams.png";
 
 type Sponsor = {
   name: string;
@@ -80,27 +75,25 @@ const content = {
       ],
     },
     {
-      name: "Platinum Sponsor",
+      name: "Bar Underwriter",
       sponsorSize: "medium",
       sponsors: [
         {
-          name: "James and Sherry Lewis",
+          name: "The Bartholomew Family",
         },
       ],
     },
     {
-      name: "Gold Sponsor",
+      name: "Tuition Raffle Underwriter",
       sponsorSize: "medium",
       sponsors: [
         {
-          name: "Rick & Ray's Auto Plaza",
-          logo: rrap,
-          website: "https://rickandraysautoplaza.com/",
+          name: "James & Sherry Lewis",
         },
       ],
     },
     {
-      name: "Printing Sponsor",
+      name: "Printing Underwriter",
       sponsorSize: "medium",
       sponsors: [
         {
@@ -111,68 +104,23 @@ const content = {
       ],
     },
     {
-      name: "Silver Sponsor",
+      name: "Gold Sponsor",
       sponsorSize: "medium",
       sponsors: [
         {
-          name: "Michael Gilles Purgason Foundation",
-          logo: mgp,
-          website: "https://www.michaelgpurgasonfoundation.org/",
+          name: "Williams Companies",
+          logo: williams,
+          website: "https://www.williams.com/",
         },
       ],
     },
     {
-      name: "Auction Sponsor",
+      name: "Bronze Sponsor",
       sponsorSize: "medium",
       sponsors: [
         {
-          name: "Drs Alexander Orthodontics",
+          name: "Drs A Orthodontics",
           logo: drsalexander,
-          website: "https://www.drsalexander.com/",
-        },
-      ],
-    },
-    {
-      name: "Bronze Sponsor",
-      sponsorSize: "medium",
-      sponsors: [
-        {
-          name: "Fort Worth Community Credit Union",
-          logo: fwccu,
-          website: "https://www.ftwccu.org/",
-        },
-      ],
-    },
-    {
-      name: "Bronze Sponsor",
-      sponsorSize: "medium",
-      sponsors: [
-        {
-          name: "Alvarado Family Dentistry",
-          logo: alvarado,
-          website: "https://www.alvaradodentist.com/",
-        },
-      ],
-    },
-    {
-      name: "Bronze Sponsor",
-      sponsorSize: "medium",
-      sponsors: [
-        {
-          name: "Willow Park Family Dentistry",
-          logo: willowpark,
-          website: "http://www.willowparkfamilydentistry.com/",
-        },
-      ],
-    },
-    {
-      name: "Ruby Sponsor",
-      sponsorSize: "medium",
-      sponsors: [
-        {
-          name: "La Isla Restaurant",
-          logo: laisla,
-          website: "https://laislatx.com/",
         },
       ],
     },
@@ -183,16 +131,10 @@ const content = {
         {
           name: "The Guerrero Family",
         },
-      ],
-    },
-    {
-      name: "Dessert Sponsor",
-      sponsorSize: "medium",
-      sponsors: [
         {
-          name: "Marquez Bakery",
-          logo: marquezbakery,
-          website: "https://www.marquezbakery.com/",
+          name: "Smart Families",
+          logo: smartfamilies,
+          website: "https://www.smart-families.org/",
         },
       ],
     },

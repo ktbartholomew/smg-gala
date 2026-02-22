@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import bvg from "@/app/sponsors/barnes-video-group-logo.png";
+import { SponsorsList } from "@/components/sponsors-list";
 
 export default function Home() {
   return (
@@ -13,13 +14,13 @@ export default function Home() {
       <div className="max-w-[80ch] mx-auto md:mt-8 ">
         <BorderCard background="translucent">
           <Image
-            className="mx-auto my-16"
+            className="mx-auto my-16 px-4"
             src="/a-toast-to-grace-lockup-square.svg"
             alt="A Toast to Grace SMG Gala"
             width={512}
             height={512}
           />
-          <div className="text-center mx-auto mb-8">
+          <div className="text-center mx-auto mb-8 px-4">
             <span className="text-sm uppercase">Presented by</span>
             <a
               href="https://www.barnesvideogroup.com/?utm_source=gala-smgschool-org&utm_medium=web&utm_campaign=smg-gala-sponsor"
@@ -95,7 +96,7 @@ export default function Home() {
         </BorderCard>
       </div>
 
-      {/* <SponsorsList /> */}
+      <SponsorsList />
     </>
   );
 }

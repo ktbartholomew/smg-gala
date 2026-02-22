@@ -4,50 +4,45 @@ import Image from "next/image";
 import content from "../app/content";
 
 export async function SponsorsList() {
-  return (
-    <div className="mt-8 flex flex-wrap justify-center text-center">
-      {content.sponsorGroups.map((group, idx) => {
-        let groupClass: string;
-        switch (group.sponsorSize) {
-          case "large":
-            groupClass = "mb-24 w-full";
-            break;
-          case "medium":
-            groupClass = "mb-8 w-1/2 lg:w-1/3";
-            break;
-          case "small":
-            groupClass = "mb-8 w-1/4 lg:w-1/4";
-            break;
-        }
+  const sponsorItems = content.sponsorGroups.flatMap((group) =>
+    group.sponsors.map((sponsor) => ({
+      group,
+      sponsor,
+    })),
+  );
 
+  return (
+    <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center px-4 sm:px-6 md:px-0">
+      {sponsorItems.map(({ group, sponsor }, idx) => {
+        const isTopTier = group.sponsorSize === "large";
+        const logoClass = isTopTier
+          ? "mx-auto max-h-40 w-auto object-contain"
+          : "mx-auto max-h-28 w-auto object-contain";
         return (
-          <div className={groupClass} key={idx}>
-            <h2 className="text-lg font-bold text-balance">
-              {group.name}
-              {group.sponsors.length > 1 ? "s" : ""}
-            </h2>
-            <div className="flex flex-wrap justify-center">
-              {group.sponsors.map((sponsor, idx) => {
-                return (
-                  <div key={idx} className="p-4 w-1/2 md:w-1/3">
-                    <a href={sponsor.website} target="_blank" rel="noopener">
-                      {sponsor.logo ? (
-                        <Image
-                          src={sponsor.logo}
-                          alt={sponsor.name}
-                          title={sponsor.name}
-                          loading="lazy"
-                          width={600}
-                        />
-                      ) : (
-                        <div className="text-3xl leading-tight bold text-center text-balance font-bold">
-                          {sponsor.name}
-                        </div>
-                      )}
-                    </a>
-                  </div>
-                );
-              })}
+          <div
+            className={isTopTier ? "col-span-full flex justify-center" : ""}
+            key={`${group.name}-${sponsor.name}-${idx}`}
+          >
+            <div className={isTopTier ? "w-full max-w-3xl" : "w-full"}>
+              <h2 className="text-lg font-bold text-balance">{group.name}</h2>
+              <div className="mt-4 flex justify-center">
+                <a href={sponsor.website} target="_blank" rel="noopener">
+                  {sponsor.logo ? (
+                    <Image
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      title={sponsor.name}
+                      loading="lazy"
+                      width={600}
+                      className={logoClass}
+                    />
+                  ) : (
+                    <div className="text-3xl leading-tight text-center text-balance font-bold">
+                      {sponsor.name}
+                    </div>
+                  )}
+                </a>
+              </div>
             </div>
           </div>
         );
