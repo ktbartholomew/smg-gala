@@ -62,6 +62,7 @@ const content = {
   sponsorCTASubHeadline:
     "Support our mission of Catholic Education by becoming a sponsor today!",
 
+  // Keep sponsors ordered by sponsorship level first, then alphabetically within each level.
   sponsorGroups: [
     {
       name: "Title Sponsor",
@@ -107,6 +108,12 @@ const content = {
       name: "Gold Sponsor",
       sponsorSize: "medium",
       sponsors: [
+        {
+          name: "Legacy Stone Family Wealth",
+          logoUrl: "/sponsors/legacy-stone.svg",
+          website:
+            "https://www.ameripriseadvisors.com/team/legacy-stone-family-wealth/",
+        },
         {
           name: "Williams Companies",
           logo: williams,
