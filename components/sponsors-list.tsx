@@ -19,8 +19,8 @@ export async function SponsorsList() {
           ? "mx-auto max-h-40 w-auto object-contain"
           : "mx-auto max-h-28 w-auto object-contain";
         const logoUrlClass = isTopTier
-          ? "mx-auto h-40 w-auto object-contain"
-          : "mx-auto h-28 w-auto object-contain";
+          ? "mx-auto h-40 max-w-full object-contain"
+          : "mx-auto h-28 max-w-full object-contain";
         const logoAreaClass = isTopTier
           ? "mt-4 flex min-h-40 items-center justify-center"
           : "mt-4 flex min-h-28 items-center justify-center";

@@ -1,7 +1,9 @@
 import { StaticImageData } from "next/image";
 import barnesvideogroup from "@/app/sponsors/barnes-video-group-logo.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
+import legacystone from "@/app/sponsors/legacy-stone.svg";
 import printmailpro from "@/app/sponsors/printmailpro-logo.png";
+import shanelewislaw from "@/app/sponsors/shane-lewis-law.png";
 import smartfamilies from "@/app/sponsors/smart-families.png";
 import williams from "@/app/sponsors/williams.png";
 
@@ -105,12 +107,23 @@ const content = {
       ],
     },
     {
+      name: "Platinum Sponsor",
+      sponsorSize: "medium",
+      sponsors: [
+        {
+          name: "Shane Lewis Law",
+          logo: shanelewislaw,
+          website: "https://shanelewislaw.com/",
+        },
+      ],
+    },
+    {
       name: "Gold Sponsor",
       sponsorSize: "medium",
       sponsors: [
         {
           name: "Legacy Stone Family Wealth",
-          logoUrl: "/sponsors/legacy-stone.svg",
+          logoUrl: legacystone.src,
           website:
             "https://www.ameripriseadvisors.com/team/legacy-stone-family-wealth/",
         },
