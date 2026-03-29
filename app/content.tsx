@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import advancementfoundation from "@/app/sponsors/advancement-foundation.png";
 import barnesvideogroup from "@/app/sponsors/barnes-video-group-logo.png";
 import drsalexander from "@/app/sponsors/drs-alexander.png";
 import legacystone from "@/app/sponsors/legacy-stone.svg";
@@ -121,6 +122,11 @@ const content = {
       name: "Gold Sponsor",
       sponsorSize: "medium",
       sponsors: [
+        {
+          name: "Advancement Foundation",
+          logo: advancementfoundation,
+          website: "https://www.advancementfoundation.org/",
+        },
         {
           name: "Legacy Stone Family Wealth",
           logoUrl: legacystone.src,
