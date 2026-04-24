@@ -1,4 +1,3 @@
-import Button from "@/components/button";
 import content from "./content";
 import BorderCard from "@/components/border-card";
 import GlowButton from "@/components/glow-button";
@@ -44,14 +43,24 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center md:justify-center text-xl mb-16">
-              <div>
+              {/* Day-of-event pivot: tickets are no longer the primary CTA. */}
+              {/* <div>
                 <Link href={content.buyTicketsUrl} target="_blank">
                   <GlowButton>{content.homePrimaryButtonText}</GlowButton>
+                </Link>
+              </div> */}
+              <div>
+                <Link
+                  href="https://my.onecause.com/event/organizations/sf-001C000001ZT1UOIA1/events/vevt:eae22bc7-f31a-4995-8b6c-e29edeb66399/auctions/silent-auction"
+                  target="_blank"
+                >
+                  <GlowButton>View Silent Auction</GlowButton>
                 </Link>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <div className="p-4 border border-champagne-darker bg-white rounded-lg shadow-md">
+              {/* Day-of-event pivot: sponsorship signup is closed. */}
+              {/* <div className="p-4 border border-champagne-darker bg-white rounded-lg shadow-md">
                 <h4 className="text-center uppercase font-bold mb-2">
                   Be a Sponsor
                 </h4>
@@ -69,8 +78,9 @@ export default function Home() {
                     <Button size="small">Be a sponsor</Button>
                   </Link>
                 </div>
-              </div>
-              <div className="p-4 border border-champagne-darker bg-white rounded-lg shadow-md">
+              </div> */}
+              {/* Day-of-event pivot: item donations are closed. */}
+              {/* <div className="p-4 border border-champagne-darker bg-white rounded-lg shadow-md">
                 <h4 className="text-center uppercase font-bold mb-2">
                   Donate Items
                 </h4>
@@ -88,7 +98,7 @@ export default function Home() {
                     <Button size="small">Donate Items</Button>
                   </Link>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {content.aboutSaintMariaGoretti}
