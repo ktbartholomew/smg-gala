@@ -3,25 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "gallery:optimize": "node scripts/publish-gallery.mjs --dry-run",
+    "gallery:publish": "node scripts/publish-gallery.mjs",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/blob": "^2.3.3",
+    "dotenv": "^17.4.2",
+    "next": "^15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "^15.1.4"
+    "react-slideshow-image": "^4.4.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^9",
     "eslint-config-next": "^15.1.4",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }

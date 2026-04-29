@@ -18,6 +18,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Gallery Publishing
+
+Put full-size event photos in a local folder, then publish them to Vercel Blob.
+The scripts require `GALLERY_SOURCE_DIR` and `GALLERY_BLOB_PREFIX` so source
+photos can stay outside the repository and each upload has an explicit Blob
+destination.
+
+```bash
+vercel env pull
+```
+
+Add local gallery settings to `.env.local`:
+
+```bash
+GALLERY_SOURCE_DIR=/path/to/event/photos
+GALLERY_BLOB_PREFIX=/2025/gallery
+```
+
+Then run:
+
+```bash
+npm run gallery:optimize
+npm run gallery:publish
+```
+
+`gallery:optimize` verifies the local sources and writes optimized WebP slides
+to `.gallery-build/slides` without uploading. `gallery:publish` optimizes the
+slides, uploads both originals and WebPs to Vercel Blob, then rewrites
+`app/gallery-images.ts` with the committed URL manifest used by the home page.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

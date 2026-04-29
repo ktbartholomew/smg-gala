@@ -1,3 +1,5 @@
+@import "react-slideshow-image/dist/styles.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,4 +27,195 @@ body {
 
 p {
   @apply mb-8;
+}
+
+.gallery-shell {
+  position: relative;
+  margin-inline: auto;
+  width: min(100%, 980px);
+}
+
+.gallery-loading {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-empty {
+  background: rgb(255 255 255 / 0.54);
+  border: 1px solid rgb(255 255 255 / 0.62);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.gallery-fade {
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-stage {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(420px, 72vw, 760px);
+  padding: 0.5rem 0.5rem 4.5rem;
+  position: relative;
+}
+
+.gallery-image-frame {
+  @apply shadow-sm;
+
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  background: white;
+  display: flex;
+  justify-content: center;
+  max-height: clamp(360px, 68vw, 690px);
+  max-width: 100%;
+  min-height: 260px;
+  overflow: hidden;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.gallery-slide[data-active="true"] .gallery-image-frame {
+  animation: gallery-soft-reveal 900ms ease both;
+}
+
+.gallery-image,
+.gallery-image-placeholder {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.gallery-image {
+  object-fit: contain;
+}
+
+.gallery-image-placeholder {
+  background:
+    linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.42), transparent 65%),
+    rgb(250 247 232 / 0.42);
+  background-size: 220% 100%, 100% 100%;
+  animation: gallery-placeholder-glow 1.6s ease-in-out infinite;
+}
+
+.gallery-download-link {
+  background: rgb(255 255 255 / 0.68);
+  border: 1px solid rgb(205 190 153 / 0.74);
+  border-radius: 999px;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  position: absolute;
+  bottom: 1.25rem;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.gallery-download-link:hover,
+.gallery-download-link:focus-visible {
+  background: white;
+  box-shadow: 0 10px 30px rgb(59 54 47 / 0.18);
+  transform: translateY(-1px);
+}
+
+.gallery-frame-controls {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 2rem;
+  pointer-events: none;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gallery-arrow {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: rgb(0 0 0 / 0.42);
+  border: 1px solid rgb(255 255 255 / 0.24);
+  border-radius: 999px;
+  color: white;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+  width: 3rem;
+  pointer-events: auto;
+}
+
+.gallery-arrow:hover,
+.gallery-arrow:focus-visible {
+  background: rgb(0 0 0 / 0.58);
+  transform: scale(1.04);
+}
+
+.gallery-arrow svg {
+  fill: none;
+  height: 1.55rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+  width: 1.55rem;
+}
+
+@keyframes gallery-soft-reveal {
+  from {
+    filter: saturate(0.92);
+    opacity: 0.76;
+    transform: scale(0.992);
+  }
+
+  to {
+    filter: saturate(1);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gallery-placeholder-glow {
+  0% {
+    background-position: 180% 0, 0 0;
+  }
+
+  100% {
+    background-position: -80% 0, 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-stage {
+    min-height: 430px;
+    padding-inline: 0;
+  }
+
+  .gallery-image-frame {
+    min-height: 240px;
+  }
+
+  .gallery-shell .gallery-arrow {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .gallery-frame-controls {
+    left: 1rem;
+    right: 1rem;
+  }
 }

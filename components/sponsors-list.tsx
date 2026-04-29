@@ -47,11 +47,13 @@ export async function SponsorsList() {
                       className={logoClass}
                     />
                   ) : sponsor.logoUrl ? (
-                    <img
+                    <Image
                       src={sponsor.logoUrl}
                       alt={sponsor.name}
                       title={sponsor.name}
                       loading="lazy"
+                      width={600}
+                      height={300}
                       className={logoUrlClass}
                     />
                   ) : (
