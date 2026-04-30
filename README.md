@@ -36,6 +36,15 @@ GALLERY_SOURCE_DIR=/path/to/event/photos
 GALLERY_BLOB_PREFIX=/2025/gallery
 ```
 
+Optional quality/size settings:
+
+```bash
+GALLERY_SLIDE_MAX_DIMENSION=1800
+GALLERY_DOWNLOAD_MAX_DIMENSION=3600
+GALLERY_WEBP_QUALITY=82
+GALLERY_JPEG_QUALITY=88
+```
+
 Then run:
 
 ```bash
@@ -44,9 +53,10 @@ npm run gallery:publish
 ```
 
 `gallery:optimize` verifies the local sources and writes optimized WebP slides
-to `.gallery-build/slides` without uploading. `gallery:publish` optimizes the
-slides, uploads both originals and WebPs to Vercel Blob, then rewrites
-`app/gallery-images.ts` with the committed URL manifest used by the home page.
+to `.gallery-build/slides` and high-resolution JPEG downloads to
+`.gallery-build/downloads` without uploading. `gallery:publish` uploads those
+derived images to Vercel Blob, then rewrites `app/gallery-images.ts` with the
+committed URL manifest used by the home page.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

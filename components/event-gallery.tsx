@@ -141,7 +141,7 @@ export default function EventGallery() {
                 </div>
                 <a
                   className="gallery-download-link"
-                  href={image.originalSrc}
+                  href={image.downloadSrc}
                   rel="noopener noreferrer"
                   target="_blank"
                 >

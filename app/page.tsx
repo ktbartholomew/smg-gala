@@ -11,7 +11,7 @@ export default function Home() {
           <div className="px-4 py-10 md:px-12 md:py-14">
             <Image
               alt="A Toast to Grace SMG Gala"
-              className="mx-auto mb-8 w-40 md:w-52"
+              className="mx-auto mb-8 w-48 md:w-64"
               height={512}
               priority
               src="/a-toast-to-grace-lockup-square.svg"
@@ -19,16 +19,14 @@ export default function Home() {
             />
 
             <div className="mx-auto mb-10 max-w-3xl text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.28em]">
-                Thank you
-              </p>
               <h1 className="mb-5 text-4xl font-semibold tracking-tight md:text-6xl">
-                What a beautiful night for Saint Maria Goretti.
+                Thank You
               </h1>
               <p className="mx-auto max-w-2xl text-lg leading-8 md:text-xl">
-                Thank you to every sponsor, donor, volunteer, family, and friend
-                who helped make this year&apos;s gala a joyful celebration of our
-                school community.
+                What a beautiful night for Saint Maria Goretti. Thank you to
+                every sponsor, donor, volunteer, family, and friend who helped
+                make this year&apos;s gala a joyful celebration of our school
+                community.
               </p>
             </div>
 

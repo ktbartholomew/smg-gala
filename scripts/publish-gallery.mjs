@@ -17,23 +17,23 @@ for (const envFile of [".env.local", ".env"]) {
   });
 }
 
-const optimizedDir = path.join(projectRoot, ".gallery-build", "slides");
+const buildDir = path.join(projectRoot, ".gallery-build");
+const slideDir = path.join(buildDir, "slides");
+const downloadDir = path.join(buildDir, "downloads");
 const manifestPath = path.join(projectRoot, "app", "gallery-images.ts");
 const supportedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
-const maxSlideDimension = Number(process.env.GALLERY_MAX_DIMENSION ?? 1800);
+const maxSlideDimension = Number(
+  process.env.GALLERY_SLIDE_MAX_DIMENSION ??
+    process.env.GALLERY_MAX_DIMENSION ??
+    1800,
+);
+const maxDownloadDimension = Number(
+  process.env.GALLERY_DOWNLOAD_MAX_DIMENSION ?? 3600,
+);
 const webpQuality = Number(process.env.GALLERY_WEBP_QUALITY ?? 82);
+const jpegQuality = Number(process.env.GALLERY_JPEG_QUALITY ?? 88);
 const cacheControlMaxAge = 31536000;
 const dryRun = process.argv.includes("--dry-run");
-
-function getContentType(filename) {
-  const extension = path.extname(filename).toLowerCase();
-
-  if (extension === ".jpg" || extension === ".jpeg") return "image/jpeg";
-  if (extension === ".png") return "image/png";
-  if (extension === ".webp") return "image/webp";
-
-  return "application/octet-stream";
-}
 
 function getAltText(filename) {
   const name = filename.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
@@ -157,8 +157,8 @@ async function getImageDimensions(filePath) {
   throw new Error(`Unsupported image type: ${filePath}`);
 }
 
-function getSlideDimensions({ width, height }) {
-  const scale = Math.min(1, maxSlideDimension / Math.max(width, height));
+function getResizedDimensions({ width, height }, maxDimension) {
+  const scale = Math.min(1, maxDimension / Math.max(width, height));
 
   return {
     width: Math.round(width * scale),
@@ -181,10 +181,9 @@ function buildManifest(entries) {
   return `export type GalleryImage = {
   id: string;
   alt: string;
-  originalSrc: string;
-  originalDownloadSrc: string;
-  originalWidth: number;
-  originalHeight: number;
+  downloadSrc: string;
+  downloadWidth: number;
+  downloadHeight: number;
   slideSrc: string;
   slideWidth: number;
   slideHeight: number;
@@ -196,10 +195,9 @@ ${entries
     (entry) => `  {
     id: ${JSON.stringify(entry.id)},
     alt: ${JSON.stringify(entry.alt)},
-    originalSrc: ${JSON.stringify(entry.originalSrc)},
-    originalDownloadSrc: ${JSON.stringify(entry.originalDownloadSrc)},
-    originalWidth: ${entry.originalWidth},
-    originalHeight: ${entry.originalHeight},
+    downloadSrc: ${JSON.stringify(entry.downloadSrc)},
+    downloadWidth: ${entry.downloadWidth},
+    downloadHeight: ${entry.downloadHeight},
     slideSrc: ${JSON.stringify(entry.slideSrc)},
     slideWidth: ${entry.slideWidth},
     slideHeight: ${entry.slideHeight},
@@ -251,7 +249,8 @@ if (imageFiles.length === 0) {
   throw new Error(`No gallery images found in ${sourceDir}`);
 }
 
-await mkdir(optimizedDir, { recursive: true });
+await mkdir(slideDir, { recursive: true });
+await mkdir(downloadDir, { recursive: true });
 
 const manifestEntries = [];
 
@@ -259,12 +258,21 @@ for (const [index, filename] of imageFiles.entries()) {
   const sourcePath = path.join(sourceDir, filename);
   const basename = filename.replace(/\.[^.]+$/, "");
   const slideFilename = `${basename}.webp`;
-  const optimizedPath = path.join(optimizedDir, slideFilename);
+  const downloadFilename = `${basename}.jpg`;
+  const slidePath = path.join(slideDir, slideFilename);
+  const downloadPath = path.join(downloadDir, downloadFilename);
   const originalDimensions = await getImageDimensions(sourcePath);
-  const slideDimensions = getSlideDimensions(originalDimensions);
+  const slideDimensions = getResizedDimensions(
+    originalDimensions,
+    maxSlideDimension,
+  );
+  const downloadDimensions = getResizedDimensions(
+    originalDimensions,
+    maxDownloadDimension,
+  );
 
   console.log(
-    `[${index + 1}/${imageFiles.length}] Optimizing ${filename} -> ${slideFilename}`,
+    `[${index + 1}/${imageFiles.length}] Optimizing ${filename} -> ${slideFilename}, ${downloadFilename}`,
   );
 
   await runCommand("cwebp", [
@@ -276,17 +284,31 @@ for (const [index, filename] of imageFiles.entries()) {
     String(slideDimensions.height),
     sourcePath,
     "-o",
-    optimizedPath,
+    slidePath,
+  ]);
+
+  await runCommand("sips", [
+    "-s",
+    "format",
+    "jpeg",
+    "-s",
+    "formatOptions",
+    String(jpegQuality),
+    "-z",
+    String(downloadDimensions.height),
+    String(downloadDimensions.width),
+    sourcePath,
+    "--out",
+    downloadPath,
   ]);
 
   if (dryRun) {
     manifestEntries.push({
       alt: getAltText(filename),
       id: filename,
-      originalDownloadSrc: "",
-      originalHeight: originalDimensions.height,
-      originalSrc: "",
-      originalWidth: originalDimensions.width,
+      downloadHeight: downloadDimensions.height,
+      downloadSrc: "",
+      downloadWidth: downloadDimensions.width,
       slideHeight: slideDimensions.height,
       slideSrc: "",
       slideWidth: slideDimensions.width,
@@ -294,19 +316,19 @@ for (const [index, filename] of imageFiles.entries()) {
     continue;
   }
 
-  const originalPathname = `${blobPrefix}/originals/${filename}`;
+  const downloadPathname = `${blobPrefix}/downloads/${downloadFilename}`;
   const slidePathname = `${blobPrefix}/slides/${slideFilename}`;
 
   console.log(`[${index + 1}/${imageFiles.length}] Uploading ${filename}`);
-  const [originalBlob, slideBlob] = await Promise.all([
+  const [downloadBlob, slideBlob] = await Promise.all([
     uploadFile({
-      contentType: getContentType(filename),
-      localPath: sourcePath,
-      pathname: originalPathname,
+      contentType: "image/jpeg",
+      localPath: downloadPath,
+      pathname: downloadPathname,
     }),
     uploadFile({
       contentType: "image/webp",
-      localPath: optimizedPath,
+      localPath: slidePath,
       pathname: slidePathname,
     }),
   ]);
@@ -314,10 +336,9 @@ for (const [index, filename] of imageFiles.entries()) {
   manifestEntries.push({
     alt: getAltText(filename),
     id: filename,
-    originalDownloadSrc: originalBlob.downloadUrl,
-    originalHeight: originalDimensions.height,
-    originalSrc: originalBlob.url,
-    originalWidth: originalDimensions.width,
+    downloadHeight: downloadDimensions.height,
+    downloadSrc: downloadBlob.url,
+    downloadWidth: downloadDimensions.width,
     slideHeight: slideDimensions.height,
     slideSrc: slideBlob.url,
     slideWidth: slideDimensions.width,
@@ -328,7 +349,7 @@ if (dryRun) {
   console.log(
     `Optimized ${manifestEntries.length} gallery images into ${path.relative(
       projectRoot,
-      optimizedDir,
+      buildDir,
     )}. Re-run without --dry-run to upload and update the manifest.`,
   );
 } else {
