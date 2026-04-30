@@ -11,12 +11,12 @@ export default function BorderCard(props: {
   return (
     <div
       className={[
-        "p-[8px] rounded-[28px]",
+        "md:p-[8px] md:rounded-[28px]",
         props.background === "translucent" ? translucentClass : opaqueClass,
       ].join(" ")}
     >
-      <div className="border-4 border-[var(--champagne-dark)] p-[4px] rounded-[20px]">
-        <div className="border border-[var(--champagne-dark)] rounded-[14px]">
+      <div className="md:border-4 md:border-[var(--champagne-dark)] md:p-[4px] md:rounded-[20px]">
+        <div className="md:border md:border-[var(--champagne-dark)] md:rounded-[14px]">
           {props.children}
         </div>
       </div>

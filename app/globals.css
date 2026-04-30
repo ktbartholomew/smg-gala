@@ -64,7 +64,7 @@ p {
 }
 
 .gallery-image-frame {
-  @apply shadow-sm;
+  @apply shadow-md;
 
   align-items: center;
   aspect-ratio: 4 / 3;
@@ -206,16 +206,23 @@ p {
   }
 
   .gallery-image-frame {
-    min-height: 240px;
+    background: transparent;
+    min-height: 100vw;
+    padding: 0;
   }
 
   .gallery-shell .gallery-arrow {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2.25rem;
+    width: 2.25rem;
   }
 
   .gallery-frame-controls {
-    left: 1rem;
-    right: 1rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .gallery-arrow svg {
+    height: 1.25rem;
+    width: 1.25rem;
   }
 }
