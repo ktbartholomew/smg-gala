@@ -14,7 +14,6 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 
 type Flower = {
-  depthOffset?: number;
   image: StaticImageData;
   scale: number;
 };
@@ -44,10 +43,8 @@ const flowers: Flower[] = [
   { image: flower05, scale: 0.5 },
   { image: flower06, scale: 1 },
   { image: flower07, scale: 1 },
-  { image: flower08, scale: 0.4, depthOffset: 12 },
-  // The thistle's long stem extends far beyond its placement anchor, so keep
-  // it behind nearby petals even when its anchor would otherwise be in front.
-  { image: flower09, scale: 0.7, depthOffset: 12 },
+  { image: flower08, scale: 0.4 },
+  { image: flower09, scale: 0.7 },
   { image: flower10, scale: 0.7 },
 ];
 
@@ -122,15 +119,10 @@ function createParticles(
   // Give each margin a composed upward finish with a small seeded variation.
   particles[uppermostIndex].rotation = Math.round(random() * 10 - 5);
 
-  // Give every sprite a unique depth. A lower numeric Y (higher on screen)
-  // normally receives the higher z-index; species offsets accommodate sprites
-  // whose stems extend much farther than their placement anchor.
+  // Give every sprite a unique depth. A higher numeric Y (lower on screen)
+  // receives the higher z-index, placing it in front of higher flowers.
   return particles
-    .sort(
-      (first, second) =>
-        second.y + (second.depthOffset ?? 0) -
-        (first.y + (first.depthOffset ?? 0)),
-    )
+    .sort((first, second) => first.y - second.y)
     .map((particle, index) => ({ ...particle, zIndex: index + 1 }));
 }
 
