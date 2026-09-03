@@ -34,6 +34,7 @@ body {
       transparent 74%
     ),
     var(--background);
+  isolation: isolate;
 }
 
 .font-serif,
@@ -46,13 +47,14 @@ body {
   pointer-events: none;
   position: absolute;
   user-select: none;
+  z-index: 0;
 }
 
 .flower-column {
   bottom: 0;
   position: absolute;
   top: -2rem;
-  width: clamp(11rem, 23vw, 19rem);
+  width: clamp(9rem, 18vw, 19rem);
 }
 
 .flower-column-left { left: clamp(-8rem, -7vw, -3rem); }
@@ -65,7 +67,7 @@ body {
   left: var(--flower-x);
   top: var(--flower-y);
   transform: translate(-50%, -50%) rotate(var(--flower-rotation));
-  width: clamp(5.5rem, 10vw, 11rem);
+  width: clamp(6rem, 11vw, 11rem);
 }
 
 .flower-sprite[data-density-tier="medium"],
@@ -289,9 +291,18 @@ body {
 }
 
 @media (max-width: 640px) {
-  .flower-column { opacity: 0.72; top: 1rem; }
-  .flower-column-left { left: -7rem; }
-  .flower-column-right { right: -7rem; }
+  .save-date-hero::before {
+    background: rgb(0 27 45 / 0.52);
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .flower-column { opacity: 1; top: 1rem; }
+  .flower-column-left { left: -3.5rem; }
+  .flower-column-right { right: -3.5rem; }
   .gallery-stage {
     min-height: 430px;
     padding-inline: 0;
