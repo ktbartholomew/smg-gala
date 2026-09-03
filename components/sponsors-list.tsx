@@ -12,7 +12,7 @@ export async function SponsorsList() {
   );
 
   return (
-    <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center px-4 sm:px-6 md:px-0">
+    <div className="mt-12 grid grid-cols-2 gap-10 text-center text-[var(--foreground)] md:mx-auto md:max-w-6xl md:grid-cols-3 md:px-0">
       {sponsorItems.map(({ group, sponsor }, idx) => {
         const isTopTier = group.sponsorSize === "large";
         const logoClass = isTopTier
@@ -34,9 +34,9 @@ export async function SponsorsList() {
                 isTopTier ? "w-full max-w-3xl" : "flex h-full w-full flex-col"
               }
             >
-              <h2 className="text-lg font-bold text-balance">{group.name}</h2>
+              <h2 className="text-sm font-bold uppercase tracking-[0.08em] text-balance text-[var(--muted-foreground)]">{group.name}</h2>
               <div className={logoAreaClass}>
-                <a href={sponsor.website} target="_blank" rel="noopener">
+                <a href={sponsor.website} target="_blank" rel="noopener noreferrer">
                   {sponsor.logo ? (
                     <Image
                       src={sponsor.logo}
@@ -57,7 +57,7 @@ export async function SponsorsList() {
                       className={logoUrlClass}
                     />
                   ) : (
-                    <div className="text-3xl leading-tight text-center text-balance font-bold">
+                    <div className="text-2xl leading-tight text-center text-balance font-bold">
                       {sponsor.name}
                     </div>
                   )}

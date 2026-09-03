@@ -23,10 +23,10 @@ type SponsorGroup = {
 
 const content = {
   schoolWebsiteUrl: "https://www.smgschool.org/",
-  siteTitle: "A Toast to Grace: the 2026 Saint Maria Goretti Fundraiser Gala",
+  siteTitle: "In Full Bloom | 2027 Saint Maria Goretti Gala",
   siteDescription:
-    "Celebrate over 70 years of exceptional Catholic education with Saint Maria Goretti Catholic School.",
-  eventName: "A Toast to Grace.",
+    "In Full Bloom: the 2027 Saint Maria Goretti Catholic School Gala.",
+  eventName: "In Full Bloom",
   homeLogoLeader:
     "Join Saint Maria Goretti Catholic School as we celebrate over 70 years of providing outstanding Catholic education to the entire Arlington community.",
   homePrimaryButtonText: "Buy your tickets",
@@ -51,11 +51,7 @@ const content = {
         community. At Saint Maria Goretti Catholic School, we do more than raise
         good Catholic students; we raise good citizens.
       </p>
-      <p>
-        We are happy to invite you to our &ldquo;Toast to Grace&rdquo; Gala to
-        celebrate the decades of contributions we have made in Arlington, and to
-        support as we prepare for 70 <strong>more</strong>, even better years!
-      </p>
+      {/* Previous campaign copy is intentionally retired for the annual reset. */}
     </>
   ),
   buyTicketsUrl:

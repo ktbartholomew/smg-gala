@@ -10,11 +10,7 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
-        platinum: "var(--platinum)",
         foreground: "var(--foreground)",
-        "champagne-light": "var(--champagne-light)",
-        "champagne-dark": "var(--champagne-dark)",
-        "champagne-darker": "var(--champagne-darker)",
       },
     },
   },
