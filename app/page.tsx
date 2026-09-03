@@ -11,7 +11,7 @@ export default function Home() {
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.32em] text-[var(--accent)] sm:text-sm">
             Saint Maria Goretti Catholic School
           </p>
-          <h1 className="font-serif text-6xl leading-none tracking-tight sm:text-8xl md:text-9xl">
+          <h1 className="font-serif text-balance text-6xl leading-none tracking-[-0.015em] sm:text-8xl md:text-9xl">
             In Full Bloom
           </h1>
           <div className="mx-auto my-10 h-px w-20 bg-[var(--accent)]" />
@@ -38,7 +38,7 @@ export default function Home() {
       <section aria-labelledby="past-sponsors" className="archive-section border-t border-[var(--line)] px-4 py-20 sm:px-6 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="archive-kicker">With gratitude</p>
-          <h2 id="past-sponsors" className="archive-heading">Thank you to our 2026 sponsors and donors</h2>
+          <h2 id="past-sponsors" className="archive-heading text-balance">Thank you to our 2026 sponsors and donors</h2>
           <p className="archive-intro">Your generosity made last year&apos;s gala possible and continues to strengthen the Saint Maria Goretti community.</p>
         </div>
         <SponsorsList />
@@ -47,7 +47,7 @@ export default function Home() {
       <section aria-labelledby="past-gallery" className="archive-section border-t border-[var(--line)] px-4 py-20 sm:px-6 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="archive-kicker">A look back</p>
-          <h2 id="past-gallery" className="archive-heading">Moments from the 2026 gala</h2>
+          <h2 id="past-gallery" className="archive-heading text-balance">2026 Memories</h2>
           <p className="archive-intro">Thank you to every guest, volunteer, and friend who celebrated with us.</p>
         </div>
         <EventGallery />

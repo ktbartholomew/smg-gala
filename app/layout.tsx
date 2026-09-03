@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import content from "@/app/content";
 import Link from "next/link";
+import { Praise } from "next/font/google";
+
+const praise = Praise({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-praise",
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: content.siteTitle,
@@ -14,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className={praise.variable} lang="en">
       <body className="antialiased">
         {children}
         <footer className="border-t border-[var(--line)] px-6 py-8 text-center text-sm text-[var(--muted-foreground)]">
